@@ -4,10 +4,12 @@ var router = express.Router();
 
 
 function auth(req, res, next){
+    console.log("auth auth auth auth auth ")
     console.log(req.body.username)
     if(req.body.username != 'hack'){
-        next()
+       
         console.log("AUTH PASS")
+        next()
     }else{
         res.send('No auth')
     }

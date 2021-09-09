@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 const log = (v, tick) => console.log(`${v} Elapsed: ${Date.now() - tick} ms`)
 
@@ -17,8 +19,11 @@ router.post('/', async function (req,res,next)  {
     const email = req.body.email ? req.body.email : null
 
     const result = await Promise.all([usr, pwd, email])
+    console.log(result)
     
-    res.send("Done " + usr )
+    const accessToken = jwt.sign({usr,pwd,email}, process.env.ACCESS_TOKEN_SECRET)
+    res.json({ accessToken : accessToken})
+    //res.send("Done " + usr )
     log('Authentication', tick)
     console.log("result :" + result)
 })
