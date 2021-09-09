@@ -13,6 +13,7 @@ const posts = [
 
 
 router.post('/', authorization, (req, res, next) =>{
+    
     console.log(req.headers['authorization'])
     console.log('route users')
     res.json(posts);
