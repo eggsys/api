@@ -7,12 +7,7 @@ var saveToken = require('../middleware/throwToken')
 
 const log = (v, tick) => console.log(`${v} Elapsed: ${Date.now() - tick} ms`)
 
-const posts = [
-    {
-        username: 'rungkrit',
-        title: 'My Developer Story2'
-    }
-]
+
 
 let refreshTokens = []
 
@@ -52,7 +47,7 @@ function get_refreshToken() {
 
 
 function generateAccessToken(usr, pwd, email) {
-    return jwt.sign({usr,pwd,email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30'})
+    return jwt.sign({usr,pwd,email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'})
 }
 
 function generateRefreshToken(usr, pwd, email) {
