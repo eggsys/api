@@ -4,20 +4,23 @@ const app = express();
 const authorization = require('../middleware/authorization')
 
 
-const posts = [
-    {
-        username: 'rungkrit',
-        title: 'My Developer Story'
-    }
-]
+const posts = {
+    username: 'rungkrit',
+    title: 'My Developer Story'
+}
 
 
-router.post('/', authorization, (req, res, next) =>{
-    
+
+router.get('/', (req, res, next) => {
+
     console.log(req.headers['authorization'])
     console.log('route users')
+    console.log(posts.username)
+
+    
     res.json(posts);
-} )
+
+})
 
 
 

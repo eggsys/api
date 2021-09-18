@@ -25,13 +25,13 @@ module.exports = (req, res, next) => {
 function authorization(req, res, next) {
     try {
         
-        console.log(" AUTHORIZATION for  : " + req.body['user'])
+        //console.log(" AUTHORIZATION for  : " + req.body['user'])
         const authHeader = req.headers['authorization']
-        console.log("*********************sss*")
+        console.log("*************************")
         const token = authHeader && authHeader.split(' ')[1]        
         console.log("Token :: "+token)
 
-        const decoded = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET);
+        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         //console.log(decoded)
         req.userData = decoded;
         next();

@@ -47,7 +47,7 @@ function get_refreshToken() {
 
 
 function generateAccessToken(usr, pwd, email) {
-    return jwt.sign({usr,pwd,email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'})
+    return jwt.sign({usr,pwd,email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '3600s'})
 }
 
 function generateRefreshToken(usr, pwd, email) {
